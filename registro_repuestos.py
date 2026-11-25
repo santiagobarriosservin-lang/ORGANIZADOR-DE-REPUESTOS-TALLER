@@ -39,14 +39,34 @@ def agregar_repuesto():
     repuestos.append(repuesto)
     print("Repuesto agregado.")
 
+def mostrar_repuesto(repuesto):
+    print(f"Código: {repuesto['codigo']} | Nombre: {repuesto['nombre']} | "
+          f"Marca: {repuesto['marca']} | Cantidad: {repuesto['cantidad']} | "
+          f"Ingreso: {repuesto['fecha_ingreso']}")
+
 def buscar_repuesto():
-    print("Buscar repuesto (en construcción)")
+    if len(repuestos) == 0:
+        print("No hay repuestos registrados todavía.")
+        return
+    codigo = pedir_entero("Código a buscar: ")
+    for repuesto in repuestos:
+        if repuesto["codigo"] == codigo:
+            print("Repuesto encontrado:")
+            mostrar_repuesto(repuesto)
+            return
+    print("No se encontró ningún repuesto con ese código.")
 
 def actualizar_cantidad():
     print("Actualizar cantidad (en construcción)")
 
 def consultar_lista():
-    print("Consultar lista (en construcción)")
+    if len(repuestos) == 0:
+        print("No hay repuestos registrados todavía.")
+        return
+    print("\n--- Lista de repuestos ---")
+    for repuesto in repuestos:
+        mostrar_repuesto(repuesto)
+    print(f"Total: {len(repuestos)} repuesto(s).")
 
 def menu():
     while True:
