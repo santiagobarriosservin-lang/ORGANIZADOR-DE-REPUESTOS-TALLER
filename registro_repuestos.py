@@ -30,8 +30,13 @@ def pedir_fecha(mensaje):
             print("Formato inválido, usá dd/mm/aaaa.")
 
 def agregar_repuesto():
+    codigo = pedir_entero("Código: ")
+    for repuesto in repuestos:
+        if repuesto["codigo"] == codigo:
+            print("Ese código ya existe.")
+            return
     repuesto = {
-        "codigo": pedir_entero("Código: "),
+        "codigo": codigo,
         "nombre": pedir_texto("Nombre del repuesto: "),
         "marca": pedir_texto("Marca: "),
         "cantidad": pedir_entero("Cantidad: "),
