@@ -1,6 +1,43 @@
-registro_repuestos.py
+from datetime import datetime
+
+repuestos = []
+
+def pedir_texto(mensaje):
+    while True:
+        texto = input(mensaje).strip()
+        if texto != "":
+            return texto
+        print("No puede estar vacío.")
+
+def pedir_entero(mensaje):
+    while True:
+        try:
+            numero = int(input(mensaje))
+            if numero > 0:
+                return numero
+            print("Tiene que ser mayor a cero.")
+        except ValueError:
+            print("Tenés que escribir un número entero.")
+
+def pedir_fecha(mensaje):
+    while True:
+        texto = input(mensaje)
+        try:
+            datetime.strptime(texto, "%d/%m/%Y")
+            return texto
+        except ValueError:
+            print("Formato inválido, usá dd/mm/aaaa.")
+
 def agregar_repuesto():
-    print("Agregar repuesto (en construcción)")
+    repuesto = {
+        "codigo": pedir_entero("Código: "),
+        "nombre": pedir_texto("Nombre del repuesto: "),
+        "marca": pedir_texto("Marca: "),
+        "cantidad": pedir_entero("Cantidad: "),
+        "fecha_ingreso": pedir_fecha("Fecha de ingreso (dd/mm/aaaa): ")
+    }
+    repuestos.append(repuesto)
+    print("Repuesto agregado.")
 
 def buscar_repuesto():
     print("Buscar repuesto (en construcción)")
