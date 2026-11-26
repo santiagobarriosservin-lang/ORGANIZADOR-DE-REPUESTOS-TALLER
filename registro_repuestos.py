@@ -3,6 +3,7 @@ from datetime import datetime
 repuestos = []
 
 def pedir_texto(mensaje):
+    """pide escribir un texto y inpide al usuario dejar el espacio basio"""
     while True:
         texto = input(mensaje).strip()
         if texto != "":
@@ -10,6 +11,7 @@ def pedir_texto(mensaje):
         print("No puede estar vacío.")
 
 def pedir_entero(mensaje):
+    """pide un numero alusuario mayor a cero"""
     while True:
         try:
             numero = int(input(mensaje))
@@ -20,6 +22,7 @@ def pedir_entero(mensaje):
             print("Tenés que escribir un número entero.")
 
 def pedir_fecha(mensaje):
+    """pide que coloques una fecha numerica con(/)"""
     while True:
     
         texto = input(mensaje)
@@ -30,6 +33,7 @@ def pedir_fecha(mensaje):
             print("Formato inválido, usá dd/mm/aaaa.")
 
 def agregar_repuesto():
+    """Pide los datos de un repuesto nuevo y lo guarda si el código no existe."""
     codigo = pedir_entero("Código: ")
     for repuesto in repuestos:
         if repuesto["codigo"] == codigo:
@@ -46,11 +50,13 @@ def agregar_repuesto():
     print("Repuesto agregado.")
 
 def mostrar_repuesto(repuesto):
+    """Muestra en una línea los datos de un repuesto."""
     print(f"Código: {repuesto['codigo']} | Nombre: {repuesto['nombre']} | "
           f"Marca: {repuesto['marca']} | Cantidad: {repuesto['cantidad']} | "
           f"Ingreso: {repuesto['fecha_ingreso']}")
 
 def buscar_repuesto():
+    """Busca un repuesto por código y lo muestra, o avisa si no existe."""
     if len(repuestos) == 0:
         print("No hay repuestos registrados todavía.")
         return
@@ -63,6 +69,7 @@ def buscar_repuesto():
     print("No se encontró ningún repuesto con ese código.")
 
 def actualizar_cantidad():
+    """Cambia la cantidad de un repuesto por una nueva."""
     if len(repuestos) == 0:
         print("No hay repuestos registrados todavía.")
         return
@@ -75,6 +82,7 @@ def actualizar_cantidad():
     print("No se encontró ningún repuesto con ese código.")
             
 def consultar_lista():
+    """Resta del stock la cantidad entregada, si alcanza."""
     if len(repuestos) == 0:
         print("No hay repuestos registrados todavía.")
         return
@@ -83,6 +91,7 @@ def consultar_lista():
         mostrar_repuesto(repuesto)
     print(f"Total: {len(repuestos)} repuesto(s).")
 def entregar_repuesto():
+    """Muestra todos los repuestos cargados y el total."""
     if len(repuestos) == 0:
         print("No hay repuestos registrados todavía.")
         return
@@ -98,6 +107,7 @@ def entregar_repuesto():
             return
     print("No se encontró ningún repuesto con ese código.")
 def eliminar_repuesto():
+    """Borra un repuesto del registro por su código."""
     if len(repuestos) == 0:
         print("No hay repuestos registrados todavía.")
         return
@@ -109,6 +119,7 @@ def eliminar_repuesto():
             return
     print("No se encontró ningún repuesto con ese código.")    
 def menu():
+    """Muestra el menú y llama a la opción elegida."""
     while True:
         print("\n--- Registro de repuestos del taller ---")
         print("1. Agregar repuesto")
